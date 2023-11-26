@@ -1,0 +1,91 @@
+{
+  "name": "jgh-portfolio",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "jgh-portfolio",
+  "sourceRoot": "apps/jgh-portfolio/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/jgh-portfolio",
+        "index": "apps/jgh-portfolio/src/index.html",
+        "browser": "apps/jgh-portfolio/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/jgh-portfolio/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/jgh-portfolio/src/favicon.ico",
+          "apps/jgh-portfolio/src/assets"
+        ],
+        "styles": ["apps/jgh-portfolio/src/styles.scss"],
+        "scripts": [],
+        "server": "apps/jgh-portfolio/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/jgh-portfolio/server.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "jgh-portfolio:build:production"
+        },
+        "development": {
+          "buildTarget": "jgh-portfolio:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "jgh-portfolio:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/jgh-portfolio/**/*.ts",
+          "apps/jgh-portfolio/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/jgh-portfolio/jest.config.ts"
+      }
+    }
+  }
+}
