@@ -3,3 +3,22 @@
 <ui-lib-blog-preview *ngIf="blogPosts() | async as posts" [blogPosts]="posts">
   <kg-main-button [routerLink]="['/blog']" cta-button>Zum Blog</kg-main-button>
 </ui-lib-blog-preview>
+<kg-section-stats></kg-section-stats>
+<ui-lib-image-info-grid [infoBoxes]="infoBoxes()">
+  <h2 class="text-5xl sm:text-6xl mb-36 max-w-2xl">
+    In drei Schritten zur perfekten Immobilie
+  </h2>
+</ui-lib-image-info-grid>
+<div #workAreaWrapper class="wrapper">
+  @defer(on viewport(workAreaWrapper); prefetch on idle) {
+  <kg-section-work-areas />
+  }
+</div>
+<ng-container *ngFor="let quote of blockquotes(); let index = index">
+  <ui-lib-section-split-image-content
+    [reverse]="index % 2 === 0"
+    [image]="quote.image.data.attributes.formats.medium.url"
+  >
+    <jgh-blockquote [blockquote]="quote"></jgh-blockquote>
+  </ui-lib-section-split-image-content>
+</ng-container>

@@ -26,6 +26,7 @@
         ],
         "styles": [
           "@angular/material/prebuilt-themes/indigo-pink.css",
+          
           "apps/immobilien-khatera-gross/src/styles.scss"
         ],
         "scripts": []
