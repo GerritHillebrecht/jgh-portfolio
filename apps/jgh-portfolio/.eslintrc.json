@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "jghPortfolio",
+            "prefix": "jgh",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "jgh-portfolio",
+            "prefix": "jgh",
             "style": "kebab-case"
           }
         ]

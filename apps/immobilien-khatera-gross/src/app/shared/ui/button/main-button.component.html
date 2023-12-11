@@ -1,0 +1,27 @@
+@if(buttonOptions(); as buttonOptions) {
+<button
+  matRipple
+  [disabled]="buttonOptions.disabled"
+  class="group flex flex-row items-center gap-2 rounded-3xl border active:scale-[0.98] transition hover:bg-primary-400 hover:text-stone-50 hover:dark:bg-stone-50 hover:dark:text-stone-700"
+  [ngClass]="{
+    'px-4 py-2 text-sm': buttonOptions.size === 'medium',
+    'px-6 py-3': buttonOptions.size === 'large',
+    'text-stone-700 dark:text-stone-50 active:translate-y-[2px] border-primary-400 dark:border-stone-50':
+      !buttonOptions.cta,
+    'bg-stone-50 text-stone-700 shadow-md border-stone-50': buttonOptions.cta,
+    'hover:shadow-xl hover:scale-[1.02] hover:-translate-y-[2px] active:shadow-sm active:-translate-y-0':
+      buttonOptions.cta && !buttonOptions.disabled,
+    'opacity-50 cursor-not-allowed': buttonOptions.disabled
+  }"
+>
+  <fa-icon *ngIf="buttonOptions.icon" [icon]="buttonOptions.icon!"></fa-icon>
+  <span>
+    <ng-content></ng-content>
+  </span>
+  <fa-icon
+    *ngIf="buttonOptions.showArrow"
+    class="group-hover:translate-x-1 group-active:translate-x-0 transition-transform"
+    [icon]="iconRight()"
+  ></fa-icon>
+</button>
+}

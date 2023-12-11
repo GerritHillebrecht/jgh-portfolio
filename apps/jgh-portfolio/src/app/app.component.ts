@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { CollapsableListComponent } from '@ui-library/list';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
-  selector: 'jgh-portfolio-root',
+  imports: [RouterModule, CollapsableListComponent],
+  selector: 'jgh-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

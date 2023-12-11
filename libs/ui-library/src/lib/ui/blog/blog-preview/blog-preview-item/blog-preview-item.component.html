@@ -1,0 +1,21 @@
+@if(_post(); as post) {
+
+<a
+  #post
+  [routerLink]="[forwardURI, post.slug]"
+  class="observer-item transition-all duration-500 ease-out"
+  [ngStyle]="{ 'transition-delay': index * 0.15 + 's' }"
+>
+  <figure #figure class="aspect-[9/12] relative">
+    <picture class="">
+      <img
+        [src]="post.image"
+        class="w-full h-full object-cover absolute inset-0 image-hover-effect"
+      />
+    </picture>
+  </figure>
+  <p class="text-center text-sm mt-4 line-clamp-2 align-middle">
+    {{ post.title }}
+  </p>
+</a>
+}

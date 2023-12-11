@@ -2,7 +2,7 @@
   "name": "jgh-portfolio",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "jgh-portfolio",
+  "prefix": "jgh",
   "sourceRoot": "apps/jgh-portfolio/src",
   "tags": [],
   "targets": {

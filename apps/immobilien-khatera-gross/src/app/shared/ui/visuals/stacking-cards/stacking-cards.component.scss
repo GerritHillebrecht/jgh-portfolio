@@ -1,0 +1,88 @@
+.card {
+  --time-between-card-animations: 0.15s;
+  --max-dist-left: -50%;
+  --box-shadow: 15px 15px 10px 2px rgba(0, 0, 0, 0.25);
+
+  position: absolute;
+  border-radius: 1.5rem;
+  aspect-ratio: 16 / 9;
+  bottom: 1rem;
+  right: 1rem;
+  width: 66.66666%;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid white;
+  transition: 0.25s ease-in-out;
+  translate: 50% 0%;
+  overflow: hidden;
+
+  &::after {
+    content: 'Living Room';
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 32%;
+    padding: 1rem;
+    background-color: rgba(128, 128, 0, 0.75);
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+  }
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  &:nth-child(1) {
+    z-index: 10;
+    animation: card-1 1s ease-in-out forwards;
+    background-image: url('/assets/images/home/cards/1.jpg');
+  }
+
+  &:nth-child(2) {
+    z-index: 9;
+    animation: card-2 1s ease-in-out forwards;
+    animation-delay: calc(var(--time-between-card-animations) * 1);
+    background-image: url('/assets/images/home/cards/2.jpg');
+  }
+
+  &:nth-child(3) {
+    z-index: 8;
+    animation: card-3 1s ease-in-out forwards;
+    animation-delay: 0.15s;
+    animation-delay: calc(var(--time-between-card-animations) * 2);
+    background-image: url('/assets/images/home/cards/3.jpg');
+  }
+
+  // &:nth-child(4) {
+  //   z-index: 7;
+  //   transform: rotateZ(-16deg) rotateY(-6deg);
+  //   translate: -75% -80%;
+  //   background-image: url('/assets/images/home/cards/4.jpg');
+  // }
+}
+
+@keyframes card-1 {
+  to {
+    transform: rotateZ(-22deg) rotateY(-10deg) rotateX(2deg) translateZ(0);
+    translate: calc(var(--max-dist-left) * 1) -100%;
+    box-shadow: var(--box-shadow);
+  }
+}
+
+@keyframes card-2 {
+  to {
+    transform: rotateZ(-18deg) rotateY(-8deg) rotateX(8deg) translateZ(-30px);
+    translate: calc(var(--max-dist-left) * 0.7) -90%;
+    box-shadow: var(--box-shadow);
+  }
+}
+
+@keyframes card-3 {
+  to {
+    transform: rotateZ(-12deg) rotateY(-10deg) rotateX(15deg) translateZ(-60px);
+    translate: calc(var(--max-dist-left) * 0.25) -85%;
+    box-shadow: var(--box-shadow);
+  }
+}

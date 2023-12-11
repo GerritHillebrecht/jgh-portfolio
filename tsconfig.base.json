@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@data-access/*": ["libs/data-access/src/lib/*"],
+      "@ui-library/service/*": ["libs/ui-library/src/lib/service/*"],
+      "@ui-library/ui/*": ["libs/ui-library/src/lib/ui/*"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

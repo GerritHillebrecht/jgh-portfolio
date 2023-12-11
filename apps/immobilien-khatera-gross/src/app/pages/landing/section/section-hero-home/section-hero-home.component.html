@@ -1,0 +1,37 @@
+<section
+  class="mt-16 min-h-[70vh] relative bg-lime-900 dark-overlay flex items-center"
+>
+  <img
+    src="/assets/images/backgrounds/hero/1.jpg"
+    class="absolute inset-0 w-full h-full object-cover object-center"
+  />
+  <div
+    class="max-w-7xl mx-auto w-full relative z-10 py-20 text-stone-50 grid gap-4 grid-cols-2 items-center"
+  >
+    <div class="text-content">
+      <h1 class="uppercase text-8xl font-black tracking-[-0.05em] max-w-lg">
+        Khatera Gross
+      </h1>
+      <p class="uppercase mt-4 mb-6">Professional Home-Staging</p>
+      <div class="buttons flex gap-4 items-center">
+        <kg-main-button [options]="{ cta: true }">Kontaktieren</kg-main-button>
+        <kg-main-button [options]="{ cta: false }">
+          Was ist Home-Staging
+        </kg-main-button>
+      </div>
+    </div>
+    <div class="benefits">
+      <div class="grid grid-cols-3 items-center">
+        @for (benefit of benefits(); track benefit.title; let idx = $index) {
+        <div class="benefit text-center">
+          <fa-icon size="2xl" class="scale-150" [icon]="benefit.icon"></fa-icon>
+          <h2 class="text-2xl font-extrabold tracking-[-0.05em]">
+            {{ benefit.title }}
+          </h2>
+          <p class="text-sm">{{ benefit.text }}</p>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

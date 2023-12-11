@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "chatera-gross": {
+      "hosting": {
+        "immobilien-khatera-gross": [
+          "chatera-gross"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "chatera-gross"
+  }
+}

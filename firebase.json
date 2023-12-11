@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "immobilien-khatera-gross",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

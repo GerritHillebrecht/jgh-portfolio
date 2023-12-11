@@ -1,0 +1,5 @@
+<!-- <kg-section-hero></kg-section-hero> -->
+<kg-section-hero-home />
+<ui-lib-blog-preview *ngIf="blogPosts() | async as posts" [blogPosts]="posts">
+  <kg-main-button [routerLink]="['/blog']" cta-button>Zum Blog</kg-main-button>
+</ui-lib-blog-preview>

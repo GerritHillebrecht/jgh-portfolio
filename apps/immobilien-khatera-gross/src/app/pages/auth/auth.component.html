@@ -1,0 +1,36 @@
+<section class="h-screen grid place-items-center">
+  <img src="assets/images/logo/logo 4.svg" alt="Logo" class="w-40" />
+  <form class="max-w-lg w-full grid gap-8 px-3" [formGroup]="authForm">
+    <mat-form-field floatLabel="always">
+      <mat-label>E-Mail Adresse</mat-label>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        autocomplete="email"
+        placeholder="kg@khatera-gross.de"
+      />
+      <mat-error *ngIf="!email || email?.invalid">
+        Bitte gib eine vollständige E-Mail-Adresse ein.
+      </mat-error>
+      <mat-hint>Deine E-Mail-Adresse</mat-hint>
+    </mat-form-field>
+    <mat-form-field floatLabel="always">
+      <mat-label>Passwort</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        autocomplete="current-password"
+        placeholder="1234567890"
+      />
+      <mat-hint>Dein Passwort</mat-hint>
+      <mat-error *ngIf="!password || password?.invalid">
+        Bitte gib ein vollständiges Passwort ein.
+      </mat-error>
+    </mat-form-field>
+    <kg-main-button (click)="signIn()" [options]="{ cta: true }">
+      Login
+    </kg-main-button>
+  </form>
+</section>

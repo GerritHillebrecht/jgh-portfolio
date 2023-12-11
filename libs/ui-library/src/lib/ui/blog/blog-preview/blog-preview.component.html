@@ -1,0 +1,29 @@
+<section class="py-36 px-4 sm:px-24">
+  <div
+    class="w-full max-w-[2200px] mx-auto grid sm:grid-cols-[max-content,auto] gap-4 gap-y-10 sm:gap-10"
+  >
+    <div>
+      <h2 class="text-4xl font-PlayfairDisplay">Get Inspired.</h2>
+      <p class="max-w-xs my-4">
+        From design to lifestyle, everything you need to make life beautiful.
+      </p>
+      <ng-content select="[cta-button]"></ng-content>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-5">
+      @if (_blogPosts(); as blogPosts) {
+      <ui-lib-blog-preview-item
+        *ngFor="let post of blogPosts; let index = index"
+        [post]="post"
+        [index]="index"
+        [forwardURI]="blogOptions().forwardURI"
+      />
+      } @else {
+      <div
+        class="aspect-[9/12] relative bg-stone-100 skeleton"
+        *ngFor="let item of [0, 1, 2, 3]; let index = index"
+        [ngStyle]="{ 'animation-delay': index * 0.15 + 's' }"
+      ></div>
+      }
+    </div>
+  </div>
+</section>

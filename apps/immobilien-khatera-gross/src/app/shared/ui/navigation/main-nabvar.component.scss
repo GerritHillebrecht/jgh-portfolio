@@ -1,0 +1,18 @@
+.uncolored {
+  .mat-mdc-tab-link {
+    .mdc-tab__text-label {
+      color: inherit !important;
+      font-family: 'Geist', sans-serif !important;
+    }
+
+    &.mdc-tab--active {
+      .mdc-tab__text-label {
+        color: inherit !important;
+      }
+    }
+  }
+  .mdc-tab-indicator__content--underline {
+    border-color: currentColor !important;
+    border-radius: 12px !important;
+  }
+}

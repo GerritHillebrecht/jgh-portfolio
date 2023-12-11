@@ -1,0 +1,41 @@
+.grid-container {
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     inset-block: 0;
+//     left: 0;
+//     width: 20%;
+//     pointer-events: none;
+//     background-image: linear-gradient(
+//       to right,
+//       rgb(43 54 24),
+//       rgba(43, 54, 24, 0)
+//     );
+//   }
+
+  .card {
+    &:hover {
+      transform: translateZ(0.25rem);
+    }
+  }
+}
+
+.highlight {
+  animation: move-highlight 5s ease-in-out infinite both;
+}
+
+@keyframes move-highlight {
+  0% {
+    left: -20;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    left: 120%;
+  }
+}
