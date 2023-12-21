@@ -1,15 +1,15 @@
 /* eslint-disable @nx/enforce-module-boundaries */
 import { Injectable, inject } from '@angular/core';
-import { StrapiService } from '@jgh/ui-angular/data-access';
+import { StrapiService } from '@data-access/strapi';
 import { Quote } from './quote.model';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
-import { BlockQuote } from '@jgh/ui-angular/ui/blockquote';
+import { BlockQuote } from '@ui-library/ui/blockquote';
 import { StrapiImage } from '../models';
-import { environment } from 'apps/immobilien/src/environments/environment';
+import { environment } from 'apps/immobilien-khatera-gross/src/environments/environment';
 
 interface QuoteWithImage extends BlockQuote {
-  image: StrapiImage;
+  image?: StrapiImage;
 }
 
 @Injectable({
@@ -28,7 +28,7 @@ export class QuoteService {
             sortBy: 'publishedAt',
             sortOrder: 'asc',
           },
-          server: environment.backend_server
+          server: environment.backend_server,
         })
         .pipe(
           map((data) =>

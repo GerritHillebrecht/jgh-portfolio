@@ -2,8 +2,14 @@
   "hosting": [
     {
       "target": "immobilien-khatera-gross",
-      "source": ".",
-      "frameworksBackend": {}
+      "public": "dist/apps/immobilien-khatera-gross/browser",
+      "ignore": ["**/.*"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     }
   ]
 }

@@ -1,16 +1,29 @@
 /* eslint-disable @nx/enforce-module-boundaries */
 import { Injectable, inject } from '@angular/core';
-import { StrapiService, QueryParams } from '@data-access/strapi';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { QueryParams, StrapiService } from '@data-access/strapi';
+import { environment } from 'apps/immobilien-khatera-gross/src/environments/environment';
 import { map } from 'rxjs/operators';
 import { BlogPost } from './blog.model';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { environment } from 'apps/immobilien-khatera-gross/src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlogService {
   private readonly strapi = inject(StrapiService);
+  private readonly blogPostsObservable = this.strapi
+    .fetchData<BlogPost>({
+      path: 'blogentries',
+      query: {
+        populate: ['Vorschaubild'],
+        sortBy: 'publishedAt',
+        sortOrder: 'desc',
+      },
+      server: environment.backend_server,
+    })
+    .pipe(map(({ data }) => data));
+
+  public readonly allBlogPosts = toSignal(this.blogPostsObservable);
 
   blogPosts({ page, pageSize }: Partial<QueryParams> = {}) {
     return toSignal(
@@ -26,7 +39,7 @@ export class BlogService {
           },
           server: environment.backend_server,
         })
-        .pipe(map((data) => data.data))
+        .pipe(map(({ data }) => data))
     );
   }
 

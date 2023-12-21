@@ -9,26 +9,26 @@
     class="max-w-7xl mx-auto w-full relative z-10 py-20 text-stone-50 grid gap-4 grid-cols-2 items-center"
   >
     <div class="text-content">
-      <h1 class="uppercase text-8xl font-black tracking-[-0.05em] max-w-lg">
+      <p class="uppercase">Professional Home-Staging</p>
+      <h1 class="uppercase mt-4 mb-6 text-8xl font-black tracking-[-0.05em] max-w-lg">
         Khatera Gross
       </h1>
-      <p class="uppercase mt-4 mb-6">Professional Home-Staging</p>
       <div class="buttons flex gap-4 items-center">
-        <kg-main-button [options]="{ cta: true }">Kontaktieren</kg-main-button>
-        <kg-main-button [options]="{ cta: false }">
+        <kg-main-button [options]="{ cta: true, size: 'large' }">Kontaktieren</kg-main-button>
+        <kg-main-button [options]="{ cta: false, size: 'large' }">
           Was ist Home-Staging
         </kg-main-button>
       </div>
     </div>
     <div class="benefits">
-      <div class="grid grid-cols-3 items-center">
+      <div class="grid grid-cols-3 items-center sm:hidden">
         @for (benefit of benefits(); track benefit.title; let idx = $index) {
         <div class="benefit text-center">
           <fa-icon size="2xl" class="scale-150" [icon]="benefit.icon"></fa-icon>
-          <h2 class="text-2xl font-extrabold tracking-[-0.05em]">
+          <h2 class="text-2xl mt-2 font-extrabold">
             {{ benefit.title }}
           </h2>
-          <p class="text-sm">{{ benefit.text }}</p>
+          <!-- <p class="text-sm">{{ benefit.text }}</p> -->
         </div>
         }
       </div>

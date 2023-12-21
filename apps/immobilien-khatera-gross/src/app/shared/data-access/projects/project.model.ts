@@ -1,5 +1,5 @@
 /* eslint-disable @nx/enforce-module-boundaries */
-import { StrapiImage } from '@jgh/ui-angular/data-access';
+import { StrapiImage } from '@data-access/strapi';
 
 export interface Reference {
   Titel: string;

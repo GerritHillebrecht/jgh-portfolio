@@ -1,8 +1,12 @@
 <!-- <kg-section-hero></kg-section-hero> -->
 <kg-section-hero-home />
-<ui-lib-blog-preview *ngIf="blogPosts() | async as posts" [blogPosts]="posts">
-  <kg-main-button [routerLink]="['/blog']" cta-button>Zum Blog</kg-main-button>
-</ui-lib-blog-preview>
+<div class="py-24">
+  <ui-lib-blog-preview *ngIf="blogPosts() | async as posts" [blogPosts]="posts">
+    <kg-main-button [routerLink]="['/blog']" cta-button>
+      Zum Blog
+    </kg-main-button>
+  </ui-lib-blog-preview>
+</div>
 <kg-section-stats></kg-section-stats>
 <ui-lib-image-info-grid [infoBoxes]="infoBoxes()">
   <h2 class="text-5xl sm:text-6xl mb-36 max-w-2xl">
@@ -15,10 +19,10 @@
   }
 </div>
 <ng-container *ngFor="let quote of blockquotes(); let index = index">
-  <ui-lib-section-split-image-content
+  <ui-lib-split-image-content
     [reverse]="index % 2 === 0"
-    [image]="quote.image.data.attributes.formats.medium.url"
+    [image]="quote.image?.data?.attributes?.formats?.medium?.url || ''"
   >
-    <jgh-blockquote [blockquote]="quote"></jgh-blockquote>
-  </ui-lib-section-split-image-content>
+    <ui-lib-blockquote [blockquote]="quote"></ui-lib-blockquote>
+  </ui-lib-split-image-content>
 </ng-container>

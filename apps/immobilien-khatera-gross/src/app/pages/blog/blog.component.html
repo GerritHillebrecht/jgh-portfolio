@@ -30,7 +30,7 @@
           >
             <figure
               class="flex items-center justify-center cursor-pointer"
-              [routerLink]="['/', 'preview', 'blog', post.attributes.slug]"
+              [routerLink]="['/', 'blog', post.attributes.slug]"
             >
               <picture>
                 <img
@@ -39,6 +39,9 @@
                       .url
                   "
                   class="max-w-full aspect-video rounded-xl shadow-md object-cover"
+                  [ngStyle]="{
+                    'view-transition-name': 'blogpost-' + post.attributes.slug
+                  }"
                 />
               </picture>
             </figure>

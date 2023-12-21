@@ -23,7 +23,7 @@ import { MainButtonComponent } from '../../shared/ui/button/main-button.componen
 })
 export default class BlogComponent {
   private readonly blogService = inject(BlogService);
-  protected readonly blogPosts = this.blogService.blogPosts();
+  protected readonly blogPosts = this.blogService.allBlogPosts;
   protected readonly avatarOptions = signal<AvatarOptions>({
     size: '3rem',
     borderWidth: '1px',

@@ -1,22 +1,30 @@
 <section class="py-36">
   <div class="max-w-4xl px-4 mx-auto flex flex-col gap-6">
-    <ng-container *ngIf="blogPost() as blogPost; else loading">
-      <h1 class="text-4xl">{{ blogPost.attributes.Titel }}</h1>
+    <ng-container *ngIf="blogpost as blogPost; else loading">
+      <div class="flex gap-2 items-center text-primary-300">
+        <a [routerLink]="['/blog']" class="flex gap-2 items-center">
+          <mat-icon class="material-icons-outlined">auto_stories</mat-icon>
+          <span class="uppercase font-bold text-xs tracking-widest">Blog</span>
+        </a>
+        <mat-icon>chevron_right</mat-icon>
+        <p
+          class="text-xs leading-none h-3 max-w-[200px] text-ellipsis overflow-hidden whitespace-nowrap"
+        >
+          {{ blogPost.Titel }}
+        </p>
+      </div>
+      <h1 class="text-4xl leading-tight">{{ blogPost.Titel }}</h1>
       <div class="flex justify-between items-center">
         <kg-avatar-block
           [title]="
-            blogPost.attributes.createdBy
-              ? blogPost.attributes.createdBy.firstname +
-                ' ' +
-                blogPost.attributes.createdBy.lastname
+            blogPost.createdBy
+              ? blogPost.createdBy.firstname + ' ' + blogPost.createdBy.lastname
               : 'Khatera Gross'
           "
-          [subtitle]="
-            (blogPost.attributes.publishedAt | date : 'shortDate') || ''
-          "
+          [subtitle]="(blogPost.publishedAt | date : 'shortDate') || ''"
         ></kg-avatar-block>
         <div class="flex gap-4">
-          <button mat-icon-button matTooltip="Teile diese Story">
+          <button mat-icon-button matTooltip="Teile diesen Beitrag">
             <mat-icon>ios_share</mat-icon>
           </button>
         </div>
@@ -24,14 +32,16 @@
       <figure>
         <picture>
           <img
-            [src]="
-              blogPost.attributes.Vorschaubild.data.attributes.formats.large.url
-            "
+            [src]="blogPost.Vorschaubild.data.attributes.formats.medium.url"
+            class="w-full"
+            [ngStyle]="{
+              'view-transition-name': 'blogpost-' + blogPost.slug
+            }"
           />
         </picture>
       </figure>
       <div class="markdown-blog">
-        <markdown [data]="blogPost.attributes.Inhalt"></markdown>
+        <markdown [data]="blogPost.Inhalt"></markdown>
       </div>
     </ng-container>
   </div>

@@ -3,7 +3,7 @@
 <a
   #post
   [routerLink]="[forwardURI, post.slug]"
-  class="observer-item transition-all duration-500 ease-out"
+  class="observer-item transition-all duration-500 ease-out block"
   [ngStyle]="{ 'transition-delay': index * 0.15 + 's' }"
 >
   <figure #figure class="aspect-[9/12] relative">
@@ -11,6 +11,9 @@
       <img
         [src]="post.image"
         class="w-full h-full object-cover absolute inset-0 image-hover-effect"
+        [ngStyle]="{
+          'view-transition-name': 'blogpost-' + post.slug
+        }"
       />
     </picture>
   </figure>

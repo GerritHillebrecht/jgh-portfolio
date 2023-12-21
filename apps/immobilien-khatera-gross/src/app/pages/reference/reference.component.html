@@ -1,0 +1,65 @@
+<section class="py-36 px-4 sm:px-8">
+  <!-- <h2 class="text-5xl">Projekte</h2> -->
+  <div class="md:px-16 lg:px-36">
+    <p class="uppercase text-xs font-bold tracking-[0.2em]">
+      Unsere Referenzen
+    </p>
+    <p class="max-w-5xl my-8 text-4xl sm:text-5xl">
+      <span class="opacity-50">
+        Entdecken Sie unsere beeindruckenden Home Staging-Meisterwerke:
+      </span>
+      Verwandlungskunst für jede Immobilie. Eleganz, Stil und maximale
+      Attraktivität vereint in jedem Projekt.
+      <span class="opacity-50">
+        Lassen Sie sich von unseren Referenzen inspirieren!
+      </span>
+    </p>
+  </div>
+  <!-- 
+    <pre>
+      <code>
+        {{ references() | json }}
+      </code>
+    </pre> -->
+
+  <div class="mx-auto 3xl:max-w-[2200px] grid sm:grid-cols-3 gap-8 mt-20">
+    <ng-container *ngIf="allReferences() as references; else loading">
+      <a
+        #project
+        *ngFor="let reference of references; let index = index"
+        class="observer-item flex flex-col gap-4 cursor-pointer transition-all duration-700 ease-in-out"
+        [ngStyle]="{
+          'transition-delay': (index % (isSmall() ? 1 : 3)) * 0.15 + 's'
+        }"
+        [routerLink]="['/', 'projects', reference.attributes.slug]"
+      >
+        <figure class="overflow-hidden aspect-[14/9] relative">
+          <picture>
+            <img
+              class="absolute w-full h-full inset-0 object-cover hover:saturate-[1.75] hover:brightness-105 hover:scale-105 transition-[filter,transform] duration-300 ease-in-out"
+              [src]="
+                reference.attributes.Bilder.data[0].attributes.formats.medium
+                  ?.url ||
+                reference.attributes.Bilder.data[0].attributes.formats.small.url
+              "
+            />
+          </picture>
+        </figure>
+        <p class="text-xs uppercase tracking-[0.2em]">
+          {{ reference.attributes.Datum | date : 'MMMM YYYY' }}
+        </p>
+        <h2 class="text-3xl font-PlayfairDisplay leading-none">
+          {{ reference.attributes.Titel }}
+        </h2>
+      </a>
+    </ng-container>
+  </div>
+</section>
+
+<ng-template #loading>
+  <div
+    class="aspect-video relative bg-stone-100 skeleton"
+    *ngFor="let item of [0, 1, 2, 3, 4, 5]; let index = index"
+    [ngStyle]="{ 'animation-delay': index * 0.15 + 's' }"
+  ></div>
+</ng-template>

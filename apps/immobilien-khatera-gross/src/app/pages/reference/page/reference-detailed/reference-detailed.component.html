@@ -1,0 +1,85 @@
+<!-- <div class="p-20">
+  <ui-lib-glas-border>
+    <jgh-section-360-view></jgh-section-360-view>
+  </ui-lib-glas-border>
+</div> -->
+
+<section class="py-36 px-4 md:px-20">
+  <!-- <code>
+      <pre>
+          {{ project() | json }}
+      </pre>
+    </code> -->
+  <ng-container *ngIf="project() as project; else loading">
+    <div class="">
+      <p class="specific-headline-addon">Projekt</p>
+      <h1 class="mt-2 mb-6 text-4xl sm:text-5xl xl:text-6xl 3xl:text-8xl">
+        {{ project.attributes.Titel }}
+      </h1>
+      <div class="mb-8">
+        <kg-avatar-block
+          [title]="
+            project.attributes.createdBy
+              ? project.attributes.createdBy.firstname +
+                ' ' +
+                project.attributes.createdBy.lastname
+              : 'Khatera Gross'
+          "
+          [subtitle]="(project.attributes!.Datum | date : 'MMMM YYYY') || ''"
+        ></kg-avatar-block>
+      </div>
+
+      <div class="360view" *ngIf="project.attributes.surroundView">
+        <ngx-view360 class="aspect-video" [options]="options" />
+      </div>
+      <div
+        class=""
+        *ngIf="
+          !project.attributes.surroundView &&
+          project.attributes.Bilder.data.length > 0
+        "
+      >
+        <figure class="aspect-video relative max-w-[1800px] mx-auto">
+          <picture>
+            <img
+              class="object-cover absolute inset-0 w-full h-full"
+              [src]="project.attributes.Bilder.data[0].attributes.url"
+            />
+          </picture>
+        </figure>
+      </div>
+      <div class="mt-10 mb-14 max-w-7xl mx-auto markdown-reference">
+        <p class="specific-headline-addon mb-6">Projektbeschreibung</p>
+        <markdown [data]="project.attributes.Beschreibung"> </markdown>
+      </div>
+      <p class="specific-headline-addon mb-6">See it yourself</p>
+      <div
+        class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 3xl:grid-cols-4 gap-8"
+      >
+        <div
+          class="image relative aspect-square"
+          *ngFor="let image of project.attributes.Bilder.data"
+        >
+          <figure>
+            <picture>
+              <img
+                [src]="
+                  image.attributes.formats.medium?.url ||
+                  image.attributes.formats.small.url
+                "
+                class="absolute w-full h-full inset-0 object-cover hover:saturate-[1.75] hover:brightness-105 transition-[filter,transform] duration-500 ease-in-out"
+              />
+            </picture>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</section>
+<ng-template #loading>
+  <div class="skeleton skeleton-text skeleton-text__small mb-2"></div>
+  <div class="skeleton skeleton-text max-w-[80ch!important]"></div>
+  <div class="skeleton skeleton-text max-w-[65ch!important]"></div>
+  <div class="skeleton rounded-full aspect-square w-16 my-4"></div>
+  <div class="skeleton aspect-square"></div>
+</ng-template>

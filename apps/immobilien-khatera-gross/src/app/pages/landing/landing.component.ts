@@ -10,6 +10,8 @@ import { infoBoxes } from './constants/constants';
 import { SectionHeroHomeComponent } from './section/section-hero-home/section-hero-home.component';
 import { SectionStatsComponent } from './section/section-stats/section-stats.component';
 import { SectionWorkAreasComponent } from './section/section-work-areas/section-work-areas.component';
+import { SplitImageContentComponent } from '@ui-library/ui/grids/split-image-content';
+import { BlockquoteComponent } from '@ui-library/ui/blockquote';
 
 @Component({
   selector: 'kg-landing',
@@ -20,9 +22,11 @@ import { SectionWorkAreasComponent } from './section/section-work-areas/section-
     MainButtonComponent,
     BlogPreviewComponent,
     ImageInfoGridComponent,
+    BlockquoteComponent,
     SectionHeroHomeComponent,
     SectionStatsComponent,
     SectionWorkAreasComponent,
+    SplitImageContentComponent,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
